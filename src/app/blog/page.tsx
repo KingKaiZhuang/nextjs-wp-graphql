@@ -1,7 +1,10 @@
 import { LatestPosts } from "@/components/latest-posts";
 import { getAllPosts } from '@/lib/queries'
 
-// After
+// ⏱️ ISR: Revalidate listing page every 300 seconds (5 minutes)
+// to show new posts and updated metadata faster than individual posts
+export const revalidate = 300;
+
 type Params = Promise<{ slug: string }>
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
