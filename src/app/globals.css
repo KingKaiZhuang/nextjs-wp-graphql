@@ -19,3 +19,17 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+pre {
+  padding: 1rem;
+  border-radius: 0px;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+code {
+  white-space: pre;
+}
