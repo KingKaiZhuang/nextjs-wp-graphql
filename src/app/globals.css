@@ -17,6 +17,10 @@ a {
   color: inherit;
 }
 
+a:hover {
+  color: #0f766e; /* teal-700 類似色 */
+}
+
 /* -------------------------------------- */
 /* WordPress 文章 wrapper */
 /* -------------------------------------- */
@@ -175,8 +179,8 @@ pre {
   padding: 1rem;
   overflow-x: auto;
   border-radius: 4px;
-  white-space: pre-wrap;
-  word-break: break-word;
+  white-space: pre;       /* 保留原始換行，不強制折行 */
+  word-break: normal;
 }
 
 /* inline code（不加背景、不改字色） */
