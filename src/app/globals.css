@@ -30,11 +30,7 @@ pre {
 }
 
 /* 內文中小段 code：允許換行，不要把一整行撐爆 */
-.article p code {
+.code {
   white-space: pre-wrap;
   word-break: break-word;
-}
-
-code {
-  white-space: pre;
 }
