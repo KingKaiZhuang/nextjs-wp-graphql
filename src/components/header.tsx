@@ -2,24 +2,40 @@ import Link from "next/link";
 
 export function Header() {
     return(
-        <header className="flex justify-between mb-[66px] content-center">
-            <div className="font-bold text-2xl">
-                <Link href={'/'}>StackPenguin</Link>
+        <header className="flex flex-col gap-4 mb-10 md:mb-14 border-b border-slate-200 pb-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white text-xl font-semibold shadow-sm">
+                    SP
+                </div>
+                <div>
+                    <Link href={'/'} className="block text-xl md:text-2xl font-semibold tracking-tight text-slate-900">
+                        StackPenguin
+                    </Link>
+                    <p className="text-xs md:text-sm text-slate-500">記錄開發心得、實驗與學習筆記。</p>
+                </div>
             </div>
 
-            <nav>
-                <ul className="flex gap-4">
+            <nav className="flex items-center justify-start md:justify-end text-sm text-slate-700">
+                <ul className="flex gap-3 md:gap-5 rounded-full bg-slate-100/70 px-2 py-1.5 ring-1 ring-slate-200">
                     <li>
-                        <Link href={'/'}>Home</Link>
+                        <Link href={'/'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                            首頁
+                        </Link>
                     </li>
                     <li>
-                        <Link href={'/blog'}>Blog</Link>
+                        <Link href={'/blog'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                            文章
+                        </Link>
                     </li>
                     <li>
-                        <Link href={'/about'}>About</Link>
+                        <Link href={'/about'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                            關於我
+                        </Link>
                     </li>
                     <li>
-                        <Link href={'/contact'}>Contact</Link>
+                        <Link href={'/contact'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                            聯絡
+                        </Link>
                     </li>
                 </ul>
             </nav>
