@@ -22,7 +22,7 @@ a:hover {
 }
 
 /* -------------------------------------- */
-/* WordPress 文章 default wrapper */
+/* WordPress 文章 wrapper */
 /* -------------------------------------- */
 .article {
   max-width: 720px;
@@ -63,7 +63,7 @@ a:hover {
 }
 
 /* -------------------------------------- */
-/* 圖片處理（WP editor 預設會產生 alignleft/right） */
+/* 圖片（WP editor align 系列） */
 /* -------------------------------------- */
 .article img {
   max-width: 100%;
@@ -87,7 +87,6 @@ a:hover {
   margin-right: auto;
 }
 
-/* 清除浮動 */
 .article::after {
   content: "";
   display: block;
@@ -95,7 +94,7 @@ a:hover {
 }
 
 /* -------------------------------------- */
-/* UL / OL 列表樣式 */
+/* 列表樣式 */
 /* -------------------------------------- */
 .article ul,
 .article ol {
@@ -125,7 +124,7 @@ a:hover {
 }
 
 /* -------------------------------------- */
-/* 表格（WP 預設很醜，補強一下） */
+/* 表格 */
 /* -------------------------------------- */
 .article table {
   width: 100%;
@@ -147,44 +146,13 @@ a:hover {
 }
 
 /* -------------------------------------- */
-/* Gutenberg「間距」樣式修正 */
+/* Gutenberg spacer、embed */
 /* -------------------------------------- */
 .wp-block-spacer {
   display: block;
   width: 100%;
 }
 
-/* -------------------------------------- */
-/* Pre & Code 加強 */
-/* -------------------------------------- */
-pre {
-  background: #111;
-  color: #f5f5f5;
-  padding: 1rem;
-  overflow-x: auto;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-code {
-  background: #f1f1f1;
-  padding: 2px 5px;
-  font-size: 0.9rem;
-  border-radius: 4px;
-}
-
-/* 內文中小段 code */
-.code {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-/* -------------------------------------- */
-/* Gutenberg embed (YouTube, iframe) */
-/* -------------------------------------- */
 .wp-block-embed iframe,
 .wp-block-video video {
   max-width: 100%;
@@ -192,7 +160,7 @@ code {
 }
 
 /* -------------------------------------- */
-/* WP Caption */
+/* Caption */
 /* -------------------------------------- */
 .wp-caption {
   max-width: 100%;
@@ -203,4 +171,28 @@ code {
   font-size: 0.9rem;
   color: #555;
   margin-top: 4px;
+}
+
+/* -------------------------------------- */
+/* Pre & Code（保持原生顏色，不加背景） */
+/* -------------------------------------- */
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* inline code（不加背景、不改字色） */
+code {
+  padding: 2px 5px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+/* 內文中小段 code：允許換行 */
+.code {
+  white-space: pre-wrap;
+  word-break: break-word;
 }
