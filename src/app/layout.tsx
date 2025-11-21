@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { RouterLoadingOverlay } from "@/components/router-loading-overlay";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="zh-Hant">
       <body className={`${inter.className} antialiased bg-white text-slate-900`}>
         <div className="min-h-screen flex flex-col">
+          <RouterLoadingOverlay />
           <header className="w-full bg-white/90 backdrop-blur px-4 md:px-8">
             <div className="mx-auto w-full max-w-6xl py-2 md:py-2.5">
               <Header />
