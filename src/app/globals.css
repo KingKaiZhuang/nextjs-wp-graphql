@@ -17,15 +17,10 @@ a {
   color: inherit;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 /* -------------------------------------- */
 /* WordPress 文章 wrapper */
 /* -------------------------------------- */
 .article {
-  max-width: 720px;
   margin: 0 auto;
   line-height: 1.8;
   font-size: 1.06rem;

@@ -31,7 +31,7 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
                     {posts.map((post: Post) => (
                         <Link key={post.id} href={`/blog/${post.slug}`} className="border-b py-4 flex justify-between hover:bg-slate-100">
                             <div dangerouslySetInnerHTML={{ __html: post.title }}></div>
-                            <p>{new Date(post.date).toLocaleDateString("de-DE")}</p>
+                            <p>{new Date(post.date).toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit" })}</p>
                         </Link>
                     ))}
                 </div>
