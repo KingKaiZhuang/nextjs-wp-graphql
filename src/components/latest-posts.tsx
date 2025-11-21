@@ -5,6 +5,7 @@ import { SearchBar } from "@/components/search-bar";
 import { Post } from '@/lib/types';
 import Link from "next/link";
 import { ThreeDot } from "react-loading-indicators";
+import { useGlobalLoading } from "@/lib/global-loading";
 
 
 type LatestPostsProps = {
@@ -17,6 +18,7 @@ type LatestPostsProps = {
 
 export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPostsProps) {
     const [isNavigating, setIsNavigating] = useState(false);
+    const { setLoading } = useGlobalLoading();
 
     if (!posts || posts.length === 0) {
         return <div>No Posts available.</div>
@@ -37,7 +39,10 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
                         <Link
                             key={post.id}
                             href={`/blog/${post.slug}`}
-                            onClick={() => setIsNavigating(true)}
+                            onClick={() => {
+                                setIsNavigating(true);
+                                setLoading(true);
+                            }}
                             className="border-b py-4 flex justify-between items-center gap-4 hover:bg-slate-100 active:bg-slate-200 active:scale-[0.99] transition duration-150 ease-out"
                         >
                             <div

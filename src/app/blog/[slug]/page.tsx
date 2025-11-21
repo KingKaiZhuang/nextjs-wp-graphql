@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
+import { LoadingResetOnMount } from "@/components/loading-reset-on-mount";
 
 // ⏱️ ISR: Revalidate every 3600 seconds (1 hour)
 // Pages will be regenerated in the background every 1 hour
@@ -47,12 +48,11 @@ export default async function Page({ params }: {
 
     return (
         <div>
+            <LoadingResetOnMount />
             <h1 className="font-bold text-2xl mb-4" dangerouslySetInnerHTML={{ __html: post.title }}></h1>
             <div>Published on <b>{date}</b> by {post?.author?.node?.name}</div>
 
             <div className="article" dangerouslySetInnerHTML={{ __html: post?.content }} />
-
-
         </div>
     )
 }

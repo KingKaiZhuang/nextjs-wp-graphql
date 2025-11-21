@@ -1,23 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { ThreeDot } from "react-loading-indicators";
+import { useGlobalLoading } from "@/lib/global-loading";
 
 export function RouterLoadingOverlay() {
-  const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    // 當路由變化時，短暫顯示全螢幕 loading（模擬載入過程）
-    setIsLoading(true);
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 400); // 約 0.4 秒的過場時間
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
+  const { isLoading } = useGlobalLoading();
 
   if (!isLoading) return null;
 
