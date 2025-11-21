@@ -191,3 +191,9 @@ code {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* 文章內的連結允許斷行，避免在手機版撐出水平捲軸 */
+.article a {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
