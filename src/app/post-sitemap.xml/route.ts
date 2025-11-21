@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAllPostSlugs } from "@/lib/queries";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
 export async function GET() {
   const posts = await getAllPostSlugs();
