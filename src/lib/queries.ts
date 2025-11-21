@@ -146,3 +146,20 @@ export async function getPostsBySlug(slug: string): Promise<Post | null> {
     return data.post;
 
 }
+
+export async function getAllPostSlugs(): Promise<{ slug: string; modified: string | null; date: string | null }[]> {
+        const query = gql`
+        query GetAllPostSlugs {
+            posts(first: 1000) {
+                nodes {
+                    slug
+                    date
+                    modified
+                }
+            }
+        }
+    `;
+
+        const data: { posts: { nodes: { slug: string; modified: string | null; date: string | null }[] } } = await client.request(query);
+        return data.posts.nodes;
+}
