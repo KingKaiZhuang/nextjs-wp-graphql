@@ -19,11 +19,6 @@ export default async function Home() {
       <SocialIcons />
       <Categories categories={categories} />
       <LatestPosts posts={posts} pageInfo={pageInfo} searchTerm="" />
-      <div className="text-center">
-        <Link href={`/blog`} className='hover:underline text-gray-900 py-5 block rounded-md'>
-          View all posts
-        </Link>
-      </div>
     </section>
   );
 }

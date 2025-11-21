@@ -4,6 +4,7 @@ import { Category,Post } from '@/lib/types';
 import { PageInfo } from 'next/dist/build/utils';
 
 const client = new GraphQLClient(`${baseUrl}/graphql`);
+console.log('>> WORDPRESS_URL used by Next.js:', baseUrl);
 
 export async function getCategories(): Promise<Category[]> {
     const query = gql`

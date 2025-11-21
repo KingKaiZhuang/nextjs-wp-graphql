@@ -4,7 +4,7 @@ export function Header() {
     return(
         <header className="flex justify-between mb-[66px] content-center">
             <div className="font-bold text-2xl">
-                <Link href={'/'}>LiteQl</Link>
+                <Link href={'/'}>StackPenguin</Link>
             </div>
 
             <nav>

@@ -1,27 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
+import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
 
 // ⏱️ ISR: Revalidate every 3600 seconds (1 hour)
 // Pages will be regenerated in the background every 1 hour
 export const revalidate = 3600;
-
-// 📋 Pre-generate static pages for the top 200 most recent posts during build
-// Remaining posts (200-1000) will be generated on-demand on first visit
-export async function generateStaticParams() {
-  try {
-    const { posts } = await getAllPosts('', '', {});
-    
-    // Only pre-generate top 200 posts to keep build time reasonable
-    // This keeps build time under 10 minutes while still covering ~80% of traffic
-    return posts.slice(0, 50).map(post => ({
-      slug: post.slug,
-    }));
-  } catch (error) {
-    console.error('generateStaticParams failed:', error);
-    // If data fetching fails, all pages will be generated on-demand
-    return [];
-  }
-}
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -52,7 +35,7 @@ export default async function Page({ params }: {
 
     const post = await getPostsBySlug((await params).slug);
     if (!post) {
-        return <div>Post not found</div>
+        notFound();
     }
 
     const formattedDate = new Date(post.date);
