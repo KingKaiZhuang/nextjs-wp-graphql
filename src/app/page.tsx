@@ -4,6 +4,7 @@ import { Categories } from "@/components/categories";
 import { LatestPosts } from "@/components/latest-posts";
 import { getCategories, getAllPosts } from "@/lib/queries";
 import Link from "next/link";
+import { Suspense } from "react";
 import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 // ⏱️ ISR: Revalidate homepage every 1800 seconds (30 minutes)
@@ -15,12 +16,14 @@ export default async function Home() {
   const { posts, pageInfo } = await getAllPosts();
   
   return (
-    <section>
-      <LoadingResetOnMount />
-      <Hero />
-      <SocialIcons />
-      <Categories categories={categories} />
-      <LatestPosts posts={posts} pageInfo={pageInfo} searchTerm="" />
-    </section>
+    <Suspense fallback={null}>
+      <section>
+        <LoadingResetOnMount />
+        <Hero />
+        <SocialIcons />
+        <Categories categories={categories} />
+        <LatestPosts posts={posts} pageInfo={pageInfo} searchTerm="" />
+      </section>
+    </Suspense>
   );
 }

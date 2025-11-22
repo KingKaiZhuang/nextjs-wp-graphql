@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { RouterLoadingOverlay } from "@/components/loading/router-loading-overlay";
@@ -30,7 +31,9 @@ export default function RootLayout({
             <RouterLoadingOverlay />
             <header className="w-full bg-white/90 backdrop-blur px-4 md:px-8">
               <div className="mx-auto w-full max-w-6xl py-2 md:py-2.5">
-                <Header />
+                <Suspense fallback={null}>
+                  <Header />
+                </Suspense>
               </div>
             </header>
 
