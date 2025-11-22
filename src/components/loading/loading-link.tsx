@@ -2,7 +2,7 @@
 
 import Link, { LinkProps } from "next/link";
 import type { ReactNode, MouseEvent } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useGlobalLoading } from "@/lib/loading/global-loading";
 
 type LoadingLinkProps = LinkProps & {
@@ -13,7 +13,6 @@ type LoadingLinkProps = LinkProps & {
 export function LoadingLink({ children, onClick, href, ...rest }: LoadingLinkProps) {
   const { setLoading } = useGlobalLoading();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   function handleClick(e: MouseEvent<HTMLAnchorElement>) {
     if (onClick) {
@@ -21,7 +20,10 @@ export function LoadingLink({ children, onClick, href, ...rest }: LoadingLinkPro
     }
     if (e.defaultPrevented) return;
 
-    const currentPath = pathname + (searchParams.toString() ? `?${searchParams}` : "");
+    let currentPath = pathname;
+    if (typeof window !== "undefined" && window.location.search) {
+      currentPath += window.location.search;
+    }
     const targetPath = typeof href === "string" ? href : href.pathname || "";
 
     if (targetPath && targetPath !== currentPath) {
