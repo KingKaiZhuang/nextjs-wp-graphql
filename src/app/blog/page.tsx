@@ -1,5 +1,6 @@
 import { LatestPosts } from "@/components/latest-posts";
 import { getAllPosts } from '@/lib/queries'
+import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 // ⏱️ ISR: Revalidate listing page every 300 seconds (5 minutes)
 // to show new posts and updated metadata faster than individual posts
@@ -32,6 +33,7 @@ export default async function Page(props: {
 
     return (
         <section>
+            <LoadingResetOnMount />
             <LatestPosts {...latestPostsProps} />
         </section>
     )

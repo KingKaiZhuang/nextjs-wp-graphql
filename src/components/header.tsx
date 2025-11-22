@@ -5,7 +5,7 @@ import { LoadingLink } from "@/components/loading/loading-link";
 export function Header() {
 
     return(
-        <header className="flex flex-col gap-4 mb-10 md:mb-14 border-b border-slate-200 pb-4 md:flex-row md:items-center md:justify-between">
+        <header className="flex flex-col gap-4 mb-10 md:mb-2 border-b border-slate-200 pb-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white text-xl font-semibold shadow-sm">
                     SP
@@ -33,11 +33,6 @@ export function Header() {
                     <li>
                         <LoadingLink href={'/about'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
                             關於我
-                        </LoadingLink>
-                    </li>
-                    <li>
-                        <LoadingLink href={'/contact'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
-                            聯絡
                         </LoadingLink>
                     </li>
                 </ul>

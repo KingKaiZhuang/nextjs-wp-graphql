@@ -5,7 +5,6 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
   max-width: 100%;
-  overflow-x: hidden;
   color: #111;
 }
 
