@@ -4,6 +4,7 @@ import { Categories } from "@/components/categories";
 import { LatestPosts } from "@/components/latest-posts";
 import { getCategories, getAllPosts } from "@/lib/queries";
 import Link from "next/link";
+import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 // ⏱️ ISR: Revalidate homepage every 1800 seconds (30 minutes)
 // Homepage shows latest posts and categories, so update more frequently
@@ -15,6 +16,7 @@ export default async function Home() {
   
   return (
     <section>
+      <LoadingResetOnMount />
       <Hero />
       <SocialIcons />
       <Categories categories={categories} />

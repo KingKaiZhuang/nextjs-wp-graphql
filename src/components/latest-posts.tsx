@@ -4,8 +4,7 @@ import { useState } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { Post } from '@/lib/types';
 import Link from "next/link";
-import { ThreeDot } from "react-loading-indicators";
-import { useGlobalLoading } from "@/lib/global-loading";
+import { LoadingLink } from "@/components/loading/loading-link";
 
 
 type LatestPostsProps = {
@@ -18,7 +17,6 @@ type LatestPostsProps = {
 
 export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPostsProps) {
     const [isNavigating, setIsNavigating] = useState(false);
-    const { setLoading } = useGlobalLoading();
 
     if (!posts || posts.length === 0) {
         return <div>No Posts available.</div>
@@ -36,13 +34,9 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
 
                 <div className="flex flex-col mb-4">
                     {posts.map((post: Post) => (
-                        <Link
+                        <LoadingLink
                             key={post.id}
                             href={`/blog/${post.slug}`}
-                            onClick={() => {
-                                setIsNavigating(true);
-                                setLoading(true);
-                            }}
                             className="border-b py-4 flex justify-between items-center gap-4 hover:bg-slate-100 active:bg-slate-200 active:scale-[0.99] transition duration-150 ease-out"
                         >
                             <div
@@ -52,15 +46,9 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
                             <p className="shrink-0 text-xs text-slate-500">
                                 {new Date(post.date).toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit" })}
                             </p>
-                        </Link>
+                        </LoadingLink>
                     ))}
                 </div>
-
-                {isNavigating && (
-                    <div className="flex justify-center py-3">
-                        <ThreeDot color="#0f766e" size="small" />
-                    </div>
-                )}
             </div>
 
 

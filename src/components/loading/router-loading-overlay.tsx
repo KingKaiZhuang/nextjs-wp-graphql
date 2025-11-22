@@ -1,7 +1,7 @@
 "use client";
 
 import { ThreeDot } from "react-loading-indicators";
-import { useGlobalLoading } from "@/lib/global-loading";
+import { useGlobalLoading } from "@/lib/loading/global-loading";
 
 export function RouterLoadingOverlay() {
   const { isLoading } = useGlobalLoading();

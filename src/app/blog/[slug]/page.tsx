@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
-import { LoadingResetOnMount } from "@/components/loading-reset-on-mount";
+import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 // ⏱️ ISR: Revalidate every 3600 seconds (1 hour)
 // Pages will be regenerated in the background every 1 hour
