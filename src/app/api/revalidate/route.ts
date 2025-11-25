@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
 
   // 如果有列表頁也想重建
   revalidatePath("/blog");
+  revalidatePath("/");
 
   return NextResponse.json({
     revalidated: true,
