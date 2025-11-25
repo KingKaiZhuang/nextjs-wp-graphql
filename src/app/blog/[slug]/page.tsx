@@ -2,11 +2,9 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
 import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
-export const dynamic = "force-static";
 
-// ⏱️ ISR: Revalidate every 3600 seconds (1 hour)
-// Pages will be regenerated in the background every 1 hour
-export const revalidate = 3600;
+export const dynamic = 'force-static'; // Disable static generation
+export const revalidate = 3600; // Revalidate every hour
 
 type Props = {
     params: Promise<{ slug: string }>
