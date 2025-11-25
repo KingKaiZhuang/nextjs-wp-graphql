@@ -34,9 +34,9 @@ export default function RootLayout({
               </div>
             </header>
 
-            <main className="flex-1 flex justify-center px-4 pt-0 pb-3 md:pt-1 md:pb-4">
-              <div className="w-full max-w-7xl rounded-3xl bg-white shadow-xl ring-1 ring-slate-900/5">
-                <div className="px-5 py-5 md:px-10 md:py-8 lg:px-12 lg:py-10">
+            <main className="flex-1 flex justify-center px-0 pt-0 pb-2 md:px-4 md:pt-1 md:pb-4">
+              <div className="w-full md:max-w-7xl md:rounded-3xl bg-white md:shadow-xl md:ring-1 md:ring-slate-900/5">
+                <div className="px-4 py-4 md:px-10 md:py-8 lg:px-12 lg:py-10">
                   {children}
                   <Footer />
                 </div>
