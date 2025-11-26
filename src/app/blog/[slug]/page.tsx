@@ -46,12 +46,19 @@ export default async function Page({ params }: {
     });
 
     return (
-        <div>
-            <LoadingResetOnMount />
-            <h1 className="font-bold text-2xl mb-4" dangerouslySetInnerHTML={{ __html: post.title }}></h1>
-            <div>Published on <b>{date}</b> by {post?.author?.node?.name}</div>
+        <section className="w-full flex justify-center px-4">
+            <div className="w-full max-w-6xl">
+                <LoadingResetOnMount />
+                <h1
+                    className="font-bold text-2xl mb-4"
+                    dangerouslySetInnerHTML={{ __html: post.title }}
+                />
+                <div className="mb-4 text-sm text-slate-600">
+                    Published on <b>{date}</b> by {post?.author?.node?.name}
+                </div>
 
-            <div className="article" dangerouslySetInnerHTML={{ __html: post?.content }} />
-        </div>
+                <div className="article" dangerouslySetInnerHTML={{ __html: post?.content }} />
+            </div>
+        </section>
     )
 }
