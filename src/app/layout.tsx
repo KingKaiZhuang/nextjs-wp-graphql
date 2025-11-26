@@ -5,6 +5,12 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { RouterLoadingOverlay } from "@/components/loading/router-loading-overlay";
 import { LoadingProvider } from "@/lib/loading/global-loading";
+// Wordpress 前端樣式
+import "../../public/wp/block-library-style.css"
+import "../../public/wp/theme.css"
+// Stackable 外掛樣式
+import "../../public/wp/stackable/frontend_blocks.css"
+import "../../public/wp/stackable/frontend_blocks_responsive.css"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -29,19 +35,24 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col">
             <RouterLoadingOverlay />
             <header className="w-full bg-white px-4 md:px-8">
-              <div className="mx-auto w-full max-w-6xl py-2 md:py-2.5">
+              <div className="w-full py-2 md:py-2.5">
                 <Header />
               </div>
             </header>
 
-            <main className="flex-1 flex justify-center px-0 pt-0 pb-2 md:px-4 md:pt-1 md:pb-4">
-              <div className="w-full md:max-w-7xl md:rounded-3xl bg-white md:shadow-xl md:ring-1 md:ring-slate-900/5">
-                <div className="px-4 py-4 md:px-10 md:py-8 lg:px-12 lg:py-10">
+            <main className="flex-1 flex justify-center px-4 pt-0 pb-3 md:pt-1 md:pb-4">
+              <div className="w-full max-full">
+                <div className="px-0 md:px-0 lg:px-0">
                   {children}
-                  <Footer />
                 </div>
               </div>
             </main>
+
+            <footer className="w-full bg-white px-4 md:px-8">
+              <div className="w-full py-2 md:py-2.5">
+                <Footer />
+              </div>
+            </footer>
           </div>
         </LoadingProvider>
       </body>

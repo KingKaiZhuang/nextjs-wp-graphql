@@ -30,11 +30,6 @@ export function Header() {
                             文章
                         </LoadingLink>
                     </li>
-                    <li>
-                        <LoadingLink href={'/about'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
-                            關於我
-                        </LoadingLink>
-                    </li>
                 </ul>
             </nav>
         </header>

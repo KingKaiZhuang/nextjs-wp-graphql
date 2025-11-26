@@ -25,9 +25,9 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
     return (
         <>
             <div className="mb-8">
-                <div className="flex justify-between">
-                    <h2 className="text-xl mb-4">Latest Posts</h2>
-                    <div>
+                <div className="flex flex-col gap-3 items-start justify-between mb-4 sm:flex-row sm:items-center">
+                    <h2 className="text-xl font-semibold">Latest Posts</h2>
+                    <div className="w-full max-w-xs sm:w-auto">
                         <SearchBar />
                     </div>
                 </div>

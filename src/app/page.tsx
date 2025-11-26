@@ -11,12 +11,14 @@ export default async function Home() {
   const { posts, pageInfo } = await getAllPosts();
   
   return (
-    <section>
-      <LoadingResetOnMount />
-      <Hero />
-      <SocialIcons />
-      <Categories categories={categories} />
-      <LatestPosts posts={posts} pageInfo={pageInfo} searchTerm="" />
+    <section className="w-full flex justify-center">
+      <div className="w-full max-w-6xl">
+        <LoadingResetOnMount />
+        <Hero />
+        <SocialIcons />
+        <Categories categories={categories} />
+        <LatestPosts posts={posts} pageInfo={pageInfo} searchTerm="" />
+      </div>
     </section>
   );
 }

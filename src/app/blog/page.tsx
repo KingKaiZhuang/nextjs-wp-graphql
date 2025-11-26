@@ -28,9 +28,11 @@ export default async function Page(props: {
     }
 
     return (
-        <section>
-            <LoadingResetOnMount />
-            <LatestPosts {...latestPostsProps} />
+        <section className="w-full flex justify-center">
+            <div className="w-full max-w-6xl">
+                <LoadingResetOnMount />
+                <LatestPosts {...latestPostsProps} />
+            </div>
         </section>
     )
 }

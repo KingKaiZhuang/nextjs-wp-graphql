@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { getPageById } from "@/lib/queries";
 import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
-import "../../../public/wp/block-library-style.css"
+// 測試頁面不允許被快取
+export const dynamic = "error";
+
 // 可依需要調整重建時間
 export const revalidate = 1800;
 
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function TestPage() {
   // TODO: 把這裡的 3192 換成你實際的 WordPress Page DATABASE_ID
-  const page = await getPageById(3192);
+  const page = await getPageById(6);
 
   if (!page) {
     return <div>找不到測試頁面</div>;
