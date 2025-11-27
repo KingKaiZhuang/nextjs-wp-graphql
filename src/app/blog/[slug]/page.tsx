@@ -47,7 +47,7 @@ export default async function Page({ params }: {
 
     return (
         <section className="w-full flex justify-center px-4">
-            <div className="w-full max-w-6xl">
+            <div className="w-full max-w-4xl rounded-2xl md:bg-slate-50 md:px-4 md:py-5 md:px-6 md:py-6">
                 <LoadingResetOnMount />
                 <h1
                     className="font-bold text-2xl mb-4"
