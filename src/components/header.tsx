@@ -1,6 +1,6 @@
 "use client";
 
-import { LoadingLink } from "@/components/loading/loading-link";
+import Link from "next/link";
 
 export function Header() {
 
@@ -11,9 +11,9 @@ export function Header() {
                     SP
                 </div>
                 <div>
-                    <LoadingLink href={'/'} className="block text-xl md:text-2xl font-semibold tracking-tight text-slate-900">
+                    <Link href='/' className="block text-xl md:text-2xl font-semibold tracking-tight text-slate-900">
                         StackPenguin
-                    </LoadingLink>
+                    </Link>
                     <p className="text-xs md:text-sm text-slate-500">記錄開發心得、實驗與學習筆記。</p>
                 </div>
             </div>
@@ -21,14 +21,14 @@ export function Header() {
             <nav className="flex items-center justify-start md:justify-end text-sm text-slate-700">
                 <ul className="flex gap-3 md:gap-5 rounded-full bg-slate-100/70 px-2 py-1.5 ring-1 ring-slate-200">
                     <li>
-                        <LoadingLink href={'/'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                        <Link href='/' className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
                             首頁
-                        </LoadingLink>
+                        </Link>
                     </li>
                     <li>
-                        <LoadingLink href={'/blog'} className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
+                        <Link href='/blog' className="px-3 py-1 rounded-full hover:bg-white hover:text-slate-900 transition">
                             文章
-                        </LoadingLink>
+                        </Link>
                     </li>
                 </ul>
             </nav>

@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
-import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 export const dynamic = 'force-static'; // Disable static generation
 export const revalidate = 3600; // Revalidate every hour
@@ -48,12 +47,11 @@ export default async function Page({ params }: {
     return (
         <section className="w-full flex justify-center px-4">
             <div className="w-full max-w-4xl rounded-2xl md:bg-slate-50 md:px-4 md:py-5 md:px-6 md:py-6">
-                <LoadingResetOnMount />
                 <h1
-                    className="font-bold text-2xl mb-4"
+                    className="font-bold text-3xl mb-4"
                     dangerouslySetInnerHTML={{ __html: post.title }}
                 />
-                <div className="mb-4 text-sm text-slate-600">
+                <div className="mb-4 text-lg text-slate-600">
                     Published on <b>{date}</b> by {post?.author?.node?.name}
                 </div>
 

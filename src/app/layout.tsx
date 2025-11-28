@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { RouterLoadingOverlay } from "@/components/loading/router-loading-overlay";
-import { LoadingProvider } from "@/lib/loading/global-loading";
 // Wordpress 前端樣式
 import "../../public/wp/block-library-style.css"
 import "../../public/wp/theme.css"
@@ -31,9 +29,7 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant">
       <body className={`${inter.className} antialiased bg-white text-slate-900`}>
-        <LoadingProvider>
-          <div className="min-h-screen flex flex-col">
-            <RouterLoadingOverlay />
+      <div className="min-h-screen flex flex-col">
             <header className="w-full bg-white px-4 md:px-8">
               <div className="w-full py-2 md:py-2.5">
                 <Header />
@@ -50,11 +46,10 @@ export default function RootLayout({
 
             <footer className="w-full bg-white px-4 md:px-8">
               <div className="w-full py-2 md:py-2.5">
-                <Footer />
+              <Footer />
               </div>
             </footer>
-          </div>
-        </LoadingProvider>
+            </div>
       </body>
     </html>
   );

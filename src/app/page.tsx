@@ -4,16 +4,14 @@ import { Categories } from "@/components/categories";
 import { LatestPosts } from "@/components/latest-posts";
 import { getCategories, getAllPosts } from "@/lib/queries";
 import Link from "next/link";
-import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 export default async function Home() {
   const categories = await getCategories();
   const { posts, pageInfo } = await getAllPosts();
   
   return (
-    <section className="w-full flex justify-center">
-      <div className="w-full max-w-6xl">
-        <LoadingResetOnMount />
+  <section className="w-full flex justify-center">
+    <div className="w-full max-w-6xl">
         <Hero />
         <SocialIcons />
         <Categories categories={categories} />

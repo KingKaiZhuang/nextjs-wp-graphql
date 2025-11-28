@@ -4,7 +4,6 @@ import { useState } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { Post } from '@/lib/types';
 import Link from "next/link";
-import { LoadingLink } from "@/components/loading/loading-link";
 
 
 type LatestPostsProps = {
@@ -34,7 +33,7 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
 
                 <div className="flex flex-col mb-4">
                     {posts.map((post: Post) => (
-                        <LoadingLink
+                        <Link
                             key={post.id}
                             href={`/blog/${post.slug}`}
                             className="border-b py-4 flex justify-between items-center gap-4 hover:bg-slate-100 active:bg-slate-200 active:scale-[0.99] transition duration-150 ease-out"
@@ -46,7 +45,7 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
                             <p className="shrink-0 text-xs text-slate-500">
                                 {new Date(post.date).toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit" })}
                             </p>
-                        </LoadingLink>
+                        </Link>
                     ))}
                 </div>
             </div>

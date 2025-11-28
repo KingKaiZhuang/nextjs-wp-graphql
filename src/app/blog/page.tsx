@@ -1,6 +1,5 @@
 import { LatestPosts } from "@/components/latest-posts";
 import { getAllPosts } from '@/lib/queries'
-import { LoadingResetOnMount } from "@/components/loading/loading-reset-on-mount";
 
 type Params = Promise<{ slug: string }>
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
@@ -30,7 +29,6 @@ export default async function Page(props: {
     return (
         <section className="w-full flex justify-center">
             <div className="w-full max-w-6xl">
-                <LoadingResetOnMount />
                 <LatestPosts {...latestPostsProps} />
             </div>
         </section>
