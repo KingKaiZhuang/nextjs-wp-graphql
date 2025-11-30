@@ -28,11 +28,12 @@ export async function generateMetadata(
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
+    const featuredImage = post?.featuredImage?.node?.sourceUrl
 
     return {
         title: post?.title,
         openGraph: {
-            images: ['/open-graph.jpg', ...previousImages],
+            images: featuredImage ? [featuredImage, ...previousImages] : ['/open-graph.jpg', ...previousImages],
         },
     }
 }
@@ -46,21 +47,21 @@ export default async function Page({ params }: {
     }
 
     const formattedDate = new Date(post.date);
-    const date = formattedDate.toLocaleDateString('en-US', {
+    const date = formattedDate.toLocaleDateString('zh-TW', {
+        year: 'numeric',
         month: 'long',
-        day: 'numeric',
-        year: 'numeric'
+        day: 'numeric'
     });
 
     return (
         <section className="w-full flex justify-center px-4">
             <div className="w-full max-w-4xl rounded-2xl md:bg-slate-50 md:px-4 md:py-5 md:px-6 md:py-6">
                 <h1
-                    className="font-bold text-3xl mb-4"
+                    className="font-bold text-xl md:text-2xl lg:text-3xl mb-4"
                     dangerouslySetInnerHTML={{ __html: post.title }}
                 />
                 <div className="mb-4 text-lg text-slate-600">
-                    Published on <b>{date}</b> by {post?.author?.node?.name}
+                    發佈於 <b>{date}</b> By {post?.author?.node?.name}
                 </div>
 
                 <div className="article" dangerouslySetInnerHTML={{ __html: post?.content }} />

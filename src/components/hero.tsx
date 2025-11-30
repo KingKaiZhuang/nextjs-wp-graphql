@@ -32,11 +32,11 @@ export async function Hero() {
                         src="/hero.jpg"
                         alt="StackPenguin"
                         width={640}
-                        height={360}
-                        quality={80}
+                        height={650}
+                        quality={75}
                         priority
                         fetchPriority="high"
-                        sizes="(max-width: 768px) 100vw, 320px"
+                        sizes="(max-width: 320px) 100vw, 320px"
                         placeholder="blur"
                         blurDataURL="/hero.webp"
                         className="h-full w-full object-cover opacity-95"

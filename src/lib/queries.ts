@@ -106,6 +106,11 @@ export async function getAllPosts(
                   slug
                 }
               }
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
             }
             pageInfo {
               startCursor
@@ -158,6 +163,11 @@ export async function getPostsBySlug(slug: string): Promise<Post | null> {
                 tags {
                     nodes {
                         name
+                    }
+                }
+                featuredImage {
+                    node {
+                        sourceUrl
                     }
                 }
             }

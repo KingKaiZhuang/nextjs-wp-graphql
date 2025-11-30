@@ -1,7 +1,7 @@
 export type Category = {
-    id: string;
-    name: string;
-    slug: string;
+  id: string;
+  name: string;
+  slug: string;
 }
 
 export type Post = {
@@ -9,6 +9,7 @@ export type Post = {
   title: string;
   slug: string;
   date: string;
+  excerpt: string;
   content: string;
   author: {
     node: {
@@ -16,13 +17,19 @@ export type Post = {
     }
   }
   categories: {
-    nodes: {
-      name: Array<string>
-    }
+    nodes: Array<{
+      name: string;
+      slug: string;
+    }>
   }
   tags: {
-    nodes: {
-      name: string
+    nodes: Array<{
+      name: string;
+    }>
+  }
+  featuredImage?: {
+    node: {
+      sourceUrl: string
     }
   }
 }
