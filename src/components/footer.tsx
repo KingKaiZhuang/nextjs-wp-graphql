@@ -1,5 +1,7 @@
+"use client"
+
 export function Footer() {
-    return(
+    return (
         <footer className="mt-10 border-t border-slate-200 pt-4 text-xs md:text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-2">
             <div>
                 &copy; {new Date().getFullYear()} StackPenguin. 版權所有。

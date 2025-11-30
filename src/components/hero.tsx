@@ -1,6 +1,14 @@
+import { cacheLife } from "next/cache";
 import Image from "next/image";
 
-export function Hero() {
+export async function Hero() {
+    'use cache'
+    cacheLife({
+        stale: 3600,
+        revalidate: 7200,
+        expire: 86400,
+    })
+
     return (
         <section className="mb-8 md:mb-10 flex flex-col gap-5 md:flex-row md:items-center">
             <div className="flex-1">
@@ -21,15 +29,17 @@ export function Hero() {
                 <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-sky-400/40 via-violet-500/20 to-emerald-400/40 blur-2xl" />
                 <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 shadow-[0_18px_45px_rgba(15,23,42,0.35)] bg-slate-900">
                     <Image
-                    src="/hero.jpg"
-                    alt="StackPenguin"
-                    width={160}
-                    height={90}
-                    quality={80}
-                    placeholder="blur"
-                    blurDataURL="/hero.webp"
-                    loading="eager"
-                    className="h-full w-full object-cover opacity-95"
+                        src="/hero.jpg"
+                        alt="StackPenguin"
+                        width={640}
+                        height={360}
+                        quality={80}
+                        priority
+                        fetchPriority="high"
+                        sizes="(max-width: 768px) 100vw, 320px"
+                        placeholder="blur"
+                        blurDataURL="/hero.webp"
+                        className="h-full w-full object-cover opacity-95"
                     />
                 </div>
             </div>

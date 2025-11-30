@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import Image from "next/image";
 
 const socialIcons = [
@@ -16,8 +15,8 @@ const socialIcons = [
     }
 ]
 
-export function SocialIcons() {
-    return(
+export async function SocialIcons() {
+    return (
         <div className="mb-4 flex justify-between">
             <h2 className="text-lg">Social Media</h2>
             <div className="flex gap-2">

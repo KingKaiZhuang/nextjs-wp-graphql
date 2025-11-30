@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  
+
 
   if (body.secret !== process.env.REVALIDATE_SECRET) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
@@ -19,13 +19,12 @@ export async function POST(req: NextRequest) {
   // 依照你的路由結構調整這裡
   if (postType === "post" && slug) {
     // 假設文章在 /blog/[slug]
-    revalidatePath(`/blog/${slug}`);
+    revalidateTag(`post-${slug}`, 'max');
   }
 
   // 如果有列表頁也想重建
-  revalidatePath("/blog");
-  revalidatePath("/");
-  revalidatePath("/test");
+  revalidateTag("posts", 'max');
+  revalidateTag('categories', 'max');
 
   return NextResponse.json({
     revalidated: true,

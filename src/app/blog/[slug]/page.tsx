@@ -1,13 +1,22 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation';
 import { getPostsBySlug, getAllPosts } from "@/lib/queries"
-
-export const dynamic = 'force-static'; // Disable static generation
-export const revalidate = 3600; // Revalidate every hour
+import { cacheLife, cacheTag } from 'next/cache';
 
 type Props = {
     params: Promise<{ slug: string }>
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+async function getCachedPost(slug: string) {
+    'use cache'
+    cacheLife({
+        stale: 3600, // 1 hour until considered stale
+        revalidate: 7200, // 2 hours until revalidated
+        expire: 86400, // 1 day until expired
+    })
+    cacheTag('posts', `post-${slug}`)
+    return getPostsBySlug(slug);
 }
 
 export async function generateMetadata(
@@ -15,7 +24,7 @@ export async function generateMetadata(
     parent: ResolvingMetadata
 ): Promise<Metadata> {
 
-    const post = await getPostsBySlug((await params).slug);
+    const post = await getCachedPost((await params).slug);
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -31,8 +40,7 @@ export async function generateMetadata(
 export default async function Page({ params }: {
     params: Promise<{ slug: string }>
 }) {
-
-    const post = await getPostsBySlug((await params).slug);
+    const post = await getCachedPost((await params).slug);
     if (!post) {
         notFound();
     }

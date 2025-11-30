@@ -4,18 +4,18 @@ import { Category, Post } from '@/lib/types';
 
 console.log('>> WORDPRESS_URL used by Next.js:', baseUrl);
 
-async function wpFetch(query: string, variables: any = {}) {
+async function wpFetch(query: string, variables: any = {}, tags: string[] = []) {
 
     const cacheKey = encodeURIComponent(JSON.stringify(variables));
 
     const res = await fetch(`${baseUrl}/graphql?after=${cacheKey}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        next: { revalidate: 3600 },  // ISR for API calls
         body: JSON.stringify({
             query,
             variables
-        })
+        }),
+        next: { tags }
     });
 
     if (!res.ok) {
@@ -48,7 +48,7 @@ export async function getCategories(): Promise<Category[]> {
         }
     `;
 
-    const data = await wpFetch(query);
+    const data = await wpFetch(query, {}, ['categories']);
     return data.categories.nodes;
 }
 
@@ -125,7 +125,7 @@ export async function getAllPosts(
     if (hasSearchTerm) variables.search = searchTerm;
     if (hasCategory) variables.categorySlug = category;
 
-    const data = await wpFetch(query, variables);
+    const data = await wpFetch(query, variables, ['posts']);
 
     return {
         posts: data.posts.nodes,
@@ -164,7 +164,7 @@ export async function getPostsBySlug(slug: string): Promise<Post | null> {
         }
     `;
 
-    const data = await wpFetch(query, { slug });
+    const data = await wpFetch(query, { slug }, ['posts', `post-${slug}`]);
     return data.post;
 }
 
