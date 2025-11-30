@@ -12,22 +12,25 @@ type LatestPostsProps = {
     searchTerm?: string;
     pageInfo?: { startCursor: string | null, endCursor: string | null, hasNextPage: boolean; hasPreviousPage: boolean; };
     category?: string;
+    compact?: boolean;
 }
 
-export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPostsProps) {
+export function LatestPosts({ posts, searchTerm, pageInfo, category, compact = false }: LatestPostsProps) {
     if (!posts || posts.length === 0) {
-        return <div>No Posts available.</div>
+        return <div>目前沒有文章。</div>
     }
 
     return (
         <>
             <div className="mb-12">
-                <div className="flex flex-col gap-4 items-start justify-between mb-8 sm:flex-row sm:items-center">
-                    <h2 className="text-2xl font-bold tracking-tight text-slate-900">Latest Posts</h2>
-                    <div className="w-full max-w-xs sm:w-auto">
-                        <SearchBar />
+                {!compact && (
+                    <div className="flex flex-col gap-4 items-start justify-between mb-8 sm:flex-row sm:items-center">
+                        <h2 className="text-2xl font-bold tracking-tight text-slate-900">最新文章</h2>
+                        <div className="w-full max-w-xs sm:w-auto">
+                            <SearchBar />
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {posts.map((post: Post) => (
@@ -81,41 +84,43 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category }: LatestPos
             </div>
 
 
-            <div className="flex justify-between border-t border-slate-100 pt-8">
-                <div>
-                    {pageInfo?.hasPreviousPage && (
-                        <Link
-                            href={{
-                                pathname: '/blog',
-                                query: {
-                                    before: pageInfo.startCursor,
-                                    ...((searchTerm || category) && { search: searchTerm, categories: category })
-                                }
-                            }}
-                            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
-                        >
-                            ← Previous
-                        </Link>
-                    )}
-                </div>
+            {!compact && (
+                <div className="flex justify-between border-t border-slate-100 pt-8">
+                    <div>
+                        {pageInfo?.hasPreviousPage && (
+                            <Link
+                                href={{
+                                    pathname: '/blog',
+                                    query: {
+                                        before: pageInfo.startCursor,
+                                        ...((searchTerm || category) && { search: searchTerm, categories: category })
+                                    }
+                                }}
+                                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
+                            >
+                                ← 上一頁
+                            </Link>
+                        )}
+                    </div>
 
-                <div>
-                    {pageInfo?.hasNextPage && (
-                        <Link
-                            href={{
-                                pathname: '/blog',
-                                query: {
-                                    after: pageInfo.endCursor,
-                                    ...((searchTerm || category) && { search: searchTerm, categories: category })
-                                }
-                            }}
-                            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
-                        >
-                            Next →
-                        </Link>
-                    )}
+                    <div>
+                        {pageInfo?.hasNextPage && (
+                            <Link
+                                href={{
+                                    pathname: '/blog',
+                                    query: {
+                                        after: pageInfo.endCursor,
+                                        ...((searchTerm || category) && { search: searchTerm, categories: category })
+                                    }
+                                }}
+                                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
+                            >
+                                下一頁 →
+                            </Link>
+                        )}
+                    </div>
                 </div>
-            </div>
+            )}
 
         </>
     )

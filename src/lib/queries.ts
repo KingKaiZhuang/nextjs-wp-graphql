@@ -123,7 +123,7 @@ export async function getAllPosts(
     `;
 
     const variables: any = {
-        perPage: 10,
+        perPage: 9,
         ...(isPrevious ? { before: params.before } : { after: params.after }),
     };
 
@@ -153,11 +153,15 @@ export async function getPostsBySlug(slug: string): Promise<Post | null> {
                 author {
                     node {
                         name
+                        avatar {
+                            url
+                        }
                     }
                 }
                 categories {
                     nodes {
                         name
+                        slug
                     }
                 }
                 tags {
@@ -222,4 +226,35 @@ export async function getPageById(id: number): Promise<{
 
     const data = await wpFetch(query, { id });
     return data.page;
+}
+
+/* 取得相關文章（同分類） */
+export async function getRelatedPosts(categorySlug: string, currentPostId: number): Promise<Post[]> {
+    const query = `
+        query GetRelatedPosts($categorySlug: String, $notIn: [ID]) {
+            posts(first: 3, where: { categoryName: $categorySlug, notIn: $notIn }) {
+                nodes {
+                    id
+                    title
+                    slug
+                    date
+                    excerpt
+                    featuredImage {
+                        node {
+                            sourceUrl
+                        }
+                    }
+                    categories {
+                        nodes {
+                            name
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+    const data = await wpFetch(query, { categorySlug, notIn: [currentPostId] }, ['posts']);
+    return data.posts.nodes;
 }

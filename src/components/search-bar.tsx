@@ -12,21 +12,34 @@ export function SearchBar() {
     }
 
     return (
-        <form onSubmit={handleSearch} method="GET" className="w-full flex items-center gap-2">
+        <form onSubmit={handleSearch} method="GET" className="group w-full flex items-center gap-2">
             <div className="relative flex-1">
-                <span className="pointer-events-none absolute inset-y-0 left-2 flex items-center text-slate-400 text-xs">
-                    🔍
+                <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-500 transition-colors group-focus-within:text-teal-400">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-4 w-4"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                        />
+                    </svg>
                 </span>
                 <input
                     type="text"
                     name="search"
-                    placeholder="搜尋文章關鍵字..."
-                    className="w-full rounded-full border border-slate-300 bg-white py-1.5 pl-7 pr-3 text-sm shadow-sm outline-none transition focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
+                    placeholder="搜尋..."
+                    className="w-full rounded-md border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-sm text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-teal-500 focus:bg-white focus:ring-1 focus:ring-teal-500"
                 />
             </div>
             <button
                 type="submit"
-                className="hidden sm:inline-flex items-center rounded-full bg-teal-600 px-3 py-1 text-xs font-medium text-white shadow-sm hover:bg-teal-700 active:bg-teal-800 disabled:opacity-60"
+                className="hidden sm:inline-flex items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800 active:bg-slate-950"
             >
                 搜尋
             </button>

@@ -13,7 +13,7 @@ export async function Hero() {
         <section className="mb-8 md:mb-10 flex flex-col gap-5 md:flex-row md:items-center">
             <div className="flex-1">
                 <p className="text-xs tracking-[0.25em] uppercase text-slate-500 mb-3">
-                    WELCOME
+                    Welcome
                 </p>
                 <h1 className="font-semibold text-2xl md:text-3xl tracking-tight mb-3 text-slate-900">
                     嗨，我是 StackPenguin。

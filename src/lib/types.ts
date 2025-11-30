@@ -13,7 +13,10 @@ export type Post = {
   content: string;
   author: {
     node: {
-      name: string
+      name: string;
+      avatar?: {
+        url: string;
+      };
     }
   }
   categories: {

@@ -41,7 +41,7 @@ export default function RootLayout({
 
           <footer className="w-full bg-white px-4 md:px-8">
             <div className="w-full py-2 md:py-2.5">
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>載入中...</div>}>
                 <Footer />
               </Suspense>
             </div>

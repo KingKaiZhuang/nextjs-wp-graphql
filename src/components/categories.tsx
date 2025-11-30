@@ -7,45 +7,41 @@ import Link from "next/link";
 export function Categories({ categories }: { categories: Category[] }) {
   const [open, setOpen] = useState(false);
 
-  if (!categories || categories.length === 0) return null;
+  if (!categories?.length) return null;
 
   return (
-    <section className="mt-6 mb-4">
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xs font-medium tracking-[0.22em] text-slate-500 uppercase">
+    <section className="my-6">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xs font-bold tracking-widest text-slate-400 uppercase">
           分類
         </h2>
-
-        {/* 手機：折疊開關；桌機：隱藏 */}
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="inline-flex items-center rounded-full border border-slate-200 px-2 py-1 text-[11px] text-slate-600 hover:bg-slate-100 md:hidden"
+          className="md:hidden text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors"
         >
-          {open ? "收合" : "全部顯示"}
+          {open ? "收合" : "展開全部"}
         </button>
       </div>
 
-      <ul
-        className={[
-          "flex flex-wrap gap-2 text-xs transition-all",
-          // md 以上永遠顯示；手機依 open 決定
-          open ? "max-h-96" : "max-h-0 overflow-hidden md:max-h-none",
-          "md:max-h-none md:overflow-visible",
-        ].join(" ")}
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 md:max-h-none md:opacity-100"
+          }`}
       >
-        {categories.map((category: Category) => (
-          <li key={category.id} className="flex-shrink-0">
-            <Link
-              href={`/blog?categories=${category.slug}`}
-              className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[0.7rem] uppercase tracking-[0.12em] text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 hover:border-emerald-300 transition"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              <span>{category.name}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <ul className="flex flex-wrap gap-2.5 pb-1">
+          {categories.map((category) => (
+            <li key={category.id}>
+              <Link
+                href={`/blog?categories=${category.slug}`}
+                className="group flex items-center gap-2 rounded-full border border-slate-100 bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 shadow-sm transition-all hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-md active:scale-95"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 transition-colors group-hover:bg-emerald-500" />
+                <span>{category.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
