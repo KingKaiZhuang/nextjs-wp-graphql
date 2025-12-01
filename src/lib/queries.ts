@@ -188,6 +188,11 @@ export async function getAllPostSlugs(): Promise<{
     slug: string;
     modified: string | null;
     date: string | null;
+    featuredImage?: {
+        node: {
+            sourceUrl: string;
+        };
+    } | null;
 }[]> {
     const query = `
         query GetAllPostSlugs {
@@ -196,6 +201,11 @@ export async function getAllPostSlugs(): Promise<{
                     slug
                     date
                     modified
+                    featuredImage {
+                        node {
+                            sourceUrl
+                        }
+                    }
                 }
             }
         }
@@ -257,4 +267,25 @@ export async function getRelatedPosts(categorySlug: string, currentPostId: numbe
 
     const data = await wpFetch(query, { categorySlug, notIn: [currentPostId] }, ['posts']);
     return data.posts.nodes;
+}
+/* 取得所有頁面（用於 sitemap） */
+export async function getAllPages(): Promise<{
+    slug: string;
+    modified: string | null;
+    date: string | null;
+}[]> {
+    const query = `
+        query GetAllPages {
+            pages(first: 1000) {
+                nodes {
+                    slug
+                    date
+                    modified
+                }
+            }
+        }
+    `;
+
+    const data = await wpFetch(query);
+    return data.pages.nodes;
 }
