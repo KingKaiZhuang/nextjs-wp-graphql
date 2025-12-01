@@ -132,7 +132,7 @@ export default async function Page({ params }: {
                 )}
 
                 {/* Content */}
-                <article className="prose prose-lg prose-slate mx-auto max-w-3xl mb-16">
+                <article className="article prose prose-lg prose-slate mx-auto max-w-3xl mb-16">
                     <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 </article>
 

@@ -17,7 +17,8 @@ a {
 }
 
 a:hover {
-  color: #0f766e; /* teal-700 類似色 */
+  color: #0f766e;
+  /* teal-700 類似色 */
 }
 
 /* -------------------------------------- */
@@ -30,7 +31,7 @@ a:hover {
 }
 
 .article p {
-	margin: 0 0 0.75rem 0;
+  margin: 10px 0 10px 0;
 }
 
 /* Blockquote 內文不要額外底部間距 */
@@ -184,7 +185,8 @@ a:hover {
 pre {
   padding: 1rem;
   overflow-x: auto;
-  white-space: pre;       /* 保留原始換行，不強制折行 */
+  white-space: pre;
+  /* 保留原始換行，不強制折行 */
   word-break: normal;
   margin-bottom: 20px;
 }

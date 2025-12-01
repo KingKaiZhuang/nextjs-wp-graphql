@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cms.stackpenguin.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'secure.gravatar.com',
       },
       {
