@@ -47,7 +47,6 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category, compact = f
                                         fill
                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                        unoptimized
                                     />
                                 ) : (
                                     <div className="flex h-full w-full items-center justify-center text-slate-300">

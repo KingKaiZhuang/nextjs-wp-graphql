@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         hostname: 'stackpenguin.local',
       },
       {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
         protocol: 'https',
         hostname: 'stackpenguin.com',
       },
