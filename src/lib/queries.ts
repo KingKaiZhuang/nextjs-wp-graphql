@@ -121,7 +121,7 @@ export async function getAllPosts(
           }
         }
     `;
-
+    // 顯示幾篇文章
     const variables: any = {
         perPage: 9,
         ...(isPrevious ? { before: params.before } : { after: params.after }),
@@ -147,6 +147,7 @@ export async function getPostsBySlug(slug: string): Promise<Post | null> {
         query GetPostBySlug($slug: ID!) {
             post(id: $slug, idType: SLUG) {
                 id
+                databaseId
                 title
                 content
                 date
@@ -217,6 +218,7 @@ export async function getAllPostSlugs(): Promise<{
 
 
 /* 取得 WordPress Page by DATABASE_ID */
+// 之前測試blockeditor同步畫面用
 export async function getPageById(id: number): Promise<{
     id: string;
     slug: string;
@@ -239,7 +241,7 @@ export async function getPageById(id: number): Promise<{
 }
 
 /* 取得相關文章（同分類） */
-export async function getRelatedPosts(categorySlug: string, currentPostId: number): Promise<Post[]> {
+export async function getRelatedPosts(categorySlug: string, currentPostId: string): Promise<Post[]> {
     const query = `
         query GetRelatedPosts($categorySlug: String, $notIn: [ID]) {
             posts(first: 3, where: { categoryName: $categorySlug, notIn: $notIn }) {

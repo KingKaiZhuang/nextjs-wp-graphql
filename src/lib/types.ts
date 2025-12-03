@@ -5,7 +5,8 @@ export type Category = {
 }
 
 export type Post = {
-  id: number;
+  id: string;
+  databaseId: number;
   title: string;
   slug: string;
   date: string;

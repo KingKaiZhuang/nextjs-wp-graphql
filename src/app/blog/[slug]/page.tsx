@@ -5,6 +5,7 @@ import { cacheLife, cacheTag } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LatestPosts } from '@/components/latest-posts';
+import PostViews from '@/components/post-views';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -22,7 +23,7 @@ async function getCachedPost(slug: string) {
     return getPostsBySlug(slug);
 }
 
-async function getCachedRelatedPosts(categorySlug: string, currentPostId: number) {
+async function getCachedRelatedPosts(categorySlug: string, currentPostId: string) {
     'use cache'
     cacheLife({
         stale: 3600,
@@ -64,7 +65,7 @@ export default async function Page({ params }: {
         : [];
 
     const formattedDate = new Date(post.date);
-    const date = formattedDate.toLocaleDateString('en-US', {
+    const date = formattedDate.toLocaleDateString('zh-TW', {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
@@ -111,7 +112,10 @@ export default async function Page({ params }: {
                         )}
                         <div>
                             <div className="font-semibold text-slate-900">{post.author?.node?.name}</div>
-                            <div className="text-sm text-slate-500">發佈於 {date}</div>
+                            <div className="flex items-center text-sm text-slate-500">
+                                <span>發佈於 {date}</span>
+                                <PostViews postId={post.databaseId} />
+                            </div>
                         </div>
                     </div>
                 </header>
