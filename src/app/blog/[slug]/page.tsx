@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LatestPosts } from '@/components/latest-posts';
 import PostViews from '@/components/post-views';
+import { ScrollToTop } from '@/components/ScrollToTop';
+import { TableOfContents } from '@/components/TableOfContents';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -175,6 +177,8 @@ export default async function Page({ params }: {
                     </div>
                 )}
             </div>
+            <ScrollToTop />
+            <TableOfContents content={post.content} />
         </div>
     )
 }
