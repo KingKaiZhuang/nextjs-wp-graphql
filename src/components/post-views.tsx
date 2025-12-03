@@ -20,7 +20,7 @@ export default function PostViews({ postId, initialViews = 0 }: PostViewsProps) 
             const hasViewed = localStorage.getItem(storageKey);
 
             try {
-                const baseUrl = process.env.WORDPRESS_URL || 'http://localhost:10003';
+                const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL || 'http://localhost:10003';
                 const endpoint = `${baseUrl}/wp-json/custom/v1/post-views/${postId}`;
 
                 // If already viewed, use GET (read only). If new, use POST (increment).
