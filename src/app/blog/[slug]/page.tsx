@@ -8,6 +8,7 @@ import { LatestPosts } from '@/components/latest-posts';
 import PostViews from '@/components/post-views';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { TableOfContents } from '@/components/TableOfContents';
+import { processContent } from '@/lib/toc';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -72,6 +73,8 @@ export default async function Page({ params }: {
         month: 'short',
         day: 'numeric'
     });
+
+    const { processedContent, tocItems } = processContent(post.content);
 
     return (
         <div className="bg-slate-50 min-h-screen pb-20">
@@ -139,7 +142,7 @@ export default async function Page({ params }: {
 
                 {/* Content */}
                 <article className="article prose prose-lg prose-slate mx-auto max-w-3xl mb-16">
-                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                    <div dangerouslySetInnerHTML={{ __html: processedContent }} />
                 </article>
 
                 {/* Footer (Tags & Share) */}
@@ -178,7 +181,7 @@ export default async function Page({ params }: {
                 )}
             </div>
             <ScrollToTop />
-            <TableOfContents content={post.content} />
+            <TableOfContents headings={tocItems} />
         </div>
     )
 }

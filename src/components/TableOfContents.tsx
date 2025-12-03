@@ -1,42 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import type { TOCItem } from "@/lib/toc";
 
-interface TOCItem {
-    id: string;
-    text: string;
-    level: number;
-}
-
-export function TableOfContents({ content }: { content: string }) {
+export function TableOfContents({ headings }: { headings: TOCItem[] }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [headings, setHeadings] = useState<TOCItem[]>([]);
-
-    useEffect(() => {
-        // Parse content to find headings
-        // Note: This assumes the content HTML is static and doesn't change after mount.
-        // Since we are passing the raw HTML string, we can parse it.
-        // However, to scroll to elements, they need to exist in the DOM with IDs.
-        // The 'content' prop is just for parsing structure.
-        // We need to ensure the rendered article has IDs.
-        // A better approach for client-side TOC is to query the DOM after render.
-
-        const elements = document.querySelectorAll(".article h2, .article h3");
-        const items: TOCItem[] = [];
-
-        elements.forEach((el, index) => {
-            if (!el.id) {
-                el.id = `heading-${index}`;
-            }
-            items.push({
-                id: el.id,
-                text: el.textContent || "",
-                level: parseInt(el.tagName.substring(1)),
-            });
-        });
-
-        setHeadings(items);
-    }, [content]);
 
     if (headings.length === 0) {
         return null;
