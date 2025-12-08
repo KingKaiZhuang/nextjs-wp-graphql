@@ -17,10 +17,10 @@ export default function Error({
 
     return (
         <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors">
                 Something went wrong!
             </h2>
-            <p className="text-slate-600 mb-8 max-w-md">
+            <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md transition-colors">
                 We apologize for the inconvenience. An unexpected error has occurred.
             </p>
             <div className="flex gap-4">
@@ -29,13 +29,13 @@ export default function Error({
                         // Attempt to recover by trying to re-render the segment
                         () => reset()
                     }
-                    className="px-6 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium"
+                    className="px-6 py-2.5 bg-slate-900 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors font-medium"
                 >
                     Try again
                 </button>
                 <Link
                     href="/"
-                    className="px-6 py-2.5 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors font-medium"
+                    className="px-6 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors font-medium"
                 >
                     Return Home
                 </Link>

@@ -22,16 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-Hant">
-      <body className={`${inter.className} antialiased bg-white text-slate-900`}>
+    <html lang="zh-Hant" className="dark">
+      <body className={`${inter.className} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 relative`}>
         <div className="min-h-screen flex flex-col">
-          <header className="w-full bg-white px-4 md:px-8">
-            <div className="w-full py-2 md:py-2.5">
-              <Header />
-            </div>
-          </header>
+          <Header />
+          {/* Spacer for fixed/floating nav. CardNav is absolute/floating (top 2em + 60px height ~= 92px) */}
+          <div className="h-[120px]"></div>
 
-          <main className="flex-1 flex justify-center px-4 pt-0 pb-3 md:pt-1 md:pb-4">
+          <main className="flex-1 flex justify-center px-4 pt-4 pb-3 md:pt-1 md:pb-4">
             <div className="w-full max-full">
               <div className="px-0 md:px-0 lg:px-0">
                 {children}
@@ -39,13 +37,13 @@ export default function RootLayout({
             </div>
           </main>
 
-          <footer className="w-full bg-white px-4 md:px-8">
+          <div className="w-full bg-white dark:bg-slate-950 transition-colors px-4 md:px-8">
             <div className="w-full py-2 md:py-2.5">
               <Suspense fallback={<div>載入中...</div>}>
                 <Footer />
               </Suspense>
             </div>
-          </footer>
+          </div>
         </div>
       </body>
     </html>

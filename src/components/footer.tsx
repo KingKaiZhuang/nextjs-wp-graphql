@@ -2,8 +2,8 @@
 
 export function Footer() {
     return (
-        <footer className="mt-10 border-t border-slate-200 pt-4 text-xs md:text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-2">
-            <div>
+        <footer className="mt-10 border-t border-slate-200 dark:border-slate-800 pt-4 text-xs md:text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2 transition-colors">
+            <div className="dark:text-slate-400">
                 &copy; {new Date().getFullYear()} StackPenguin. 版權所有。
             </div>
             <div className="flex items-center gap-3">

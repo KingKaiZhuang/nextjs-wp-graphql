@@ -15,7 +15,7 @@ export function TableOfContents({ headings }: { headings: TOCItem[] }) {
             {/* Toggle Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-24 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+                className="fixed bottom-24 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 transition-all hover:bg-slate-50 dark:hover:bg-slate-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
                 aria-label="Table of Contents"
             >
                 <svg
@@ -36,12 +36,12 @@ export function TableOfContents({ headings }: { headings: TOCItem[] }) {
 
             {/* TOC Sidebar/Popover */}
             {isOpen && (
-                <div className="fixed bottom-40 right-8 z-40 w-64 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200 animate-in slide-in-from-bottom-5 fade-in duration-200">
+                <div className="fixed bottom-40 right-8 z-40 w-64 rounded-2xl bg-white dark:bg-slate-800 p-4 shadow-xl ring-1 ring-slate-200 dark:ring-slate-700 animate-in slide-in-from-bottom-5 fade-in duration-200">
                     <div className="mb-3 flex items-center justify-between">
-                        <h3 className="text-sm font-bold text-slate-900">目錄</h3>
+                        <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">目錄</h3>
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="text-slate-400 hover:text-slate-600"
+                            className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
                         >
                             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -64,7 +64,7 @@ export function TableOfContents({ headings }: { headings: TOCItem[] }) {
                                             });
                                             setIsOpen(false);
                                         }}
-                                        className="block text-sm text-slate-600 hover:text-indigo-600 line-clamp-2"
+                                        className="block text-sm text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 line-clamp-2 transition-colors"
                                     >
                                         {heading.text}
                                     </a>

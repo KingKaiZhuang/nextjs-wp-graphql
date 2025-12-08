@@ -5,39 +5,16 @@ import type { CSSProperties, JSX } from "react";
 
 const Loader = (): JSX.Element => {
     return (
-        <div style={containerStyle}>
-            <div style={fadeInStyle}>
+        <div className="flex h-screen w-screen items-center justify-center bg-white dark:bg-slate-950">
+            <div className="flex flex-col items-center animate-in fade-in duration-600">
                 <FourSquare
                     color={["#5fdaa8", "#327fcd", "#cd32cd", "#cd8032"]}
                     size="large"
                 />
-                <p style={textStyle}>載入中，請稍候...</p>
+                <p className="mt-5 text-base text-slate-500 dark:text-slate-400 tracking-wide">載入中，請稍候...</p>
             </div>
         </div>
     );
-};
-
-// TypeScript 型別：CSSProperties
-const containerStyle: CSSProperties = {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-};
-
-const fadeInStyle: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    animation: "fadeIn 0.6s ease-in-out",
-};
-
-const textStyle: CSSProperties = {
-    marginTop: "20px",
-    fontSize: "16px",
-    color: "#555",
-    letterSpacing: "1px",
 };
 
 export default Loader;
