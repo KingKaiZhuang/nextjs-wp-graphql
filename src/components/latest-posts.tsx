@@ -95,7 +95,7 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category, compact = f
                                         ...((searchTerm || category) && { search: searchTerm, categories: category })
                                     }
                                 }}
-                                className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-900 px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
                             >
                                 ← 上一頁
                             </Link>
@@ -112,7 +112,7 @@ export function LatestPosts({ posts, searchTerm, pageInfo, category, compact = f
                                         ...((searchTerm || category) && { search: searchTerm, categories: category })
                                     }
                                 }}
-                                className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-900 px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
                             >
                                 下一頁 →
                             </Link>

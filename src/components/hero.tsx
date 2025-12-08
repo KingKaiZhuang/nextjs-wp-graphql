@@ -26,10 +26,9 @@ export async function Hero() {
                 </p>
             </div>
             <div className="relative flex-1 max-w-xs mx-auto md:mx-0">
-                <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-sky-400/40 via-violet-500/20 to-emerald-400/40 blur-2xl dark:opacity-40" />
-                <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 shadow-[0_18px_45px_rgba(15,23,42,0.35)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.5)] bg-slate-900">
+                <div className="overflow-hidden rounded-3xl shadow-[0_18px_45px_rgba(15,23,42,0.35)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.5)]">
                     <Image
-                        src="/hero.jpg"
+                        src="/hero.webp"
                         alt="StackPenguin"
                         width={640}
                         height={650}

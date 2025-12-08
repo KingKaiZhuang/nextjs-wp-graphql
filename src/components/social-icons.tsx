@@ -21,7 +21,7 @@ export async function SocialIcons() {
             <h2 className="text-lg">Social Media</h2>
             <div className="flex gap-2">
                 {socialIcons.map((icon) => (
-                    <a key={icon.name} href={icon.url} target="_blank" rel="noopener noreferrer" className="p-1 rounded-md hover:scale-105 transition duration-3" >
+                    <a key={icon.name} href={icon.url} target="_blank" rel="noopener noreferrer" className="p-1 rounded-full bg-white hover:bg-gray-50 hover:scale-105 transition duration-300" >
                         <Image src={icon.image} alt={icon.alt} width={24} height={24} loading='eager' />
                     </a>
                 ))}
