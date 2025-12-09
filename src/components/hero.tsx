@@ -28,7 +28,7 @@ export async function Hero() {
             <div className="relative flex-1 max-w-xs mx-auto md:mx-0">
                 <div className="overflow-hidden rounded-3xl shadow-[0_18px_45px_rgba(15,23,42,0.35)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.5)]">
                     <Image
-                        src="/hero.webp"
+                        src="/hero2.webp"
                         alt="StackPenguin"
                         width={640}
                         height={650}
