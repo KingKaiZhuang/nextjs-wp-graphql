@@ -35,9 +35,8 @@ export async function Hero() {
                         quality={75}
                         priority
                         fetchPriority="high"
-                        sizes="(max-width: 320px) 100vw, 320px"
-                        placeholder="blur"
-                        blurDataURL="/hero.webp"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        placeholder="empty"
                         className="h-full w-full object-cover opacity-95"
                     />
                 </div>

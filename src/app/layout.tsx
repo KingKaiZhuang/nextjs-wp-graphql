@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Suspense } from "react";
-import DarkVeil from '@/components/DarkVeil';
+import DarkVeilLazy from '@/components/DarkVeilLazy';
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="zh-Hant" className="dark">
       <body className={`${inter.className} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 relative`}>
         <div className="fixed top-0 left-0 w-full h-[600px] z-0 pointer-events-none" style={{ maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)' }}>
-          <DarkVeil />
+          <DarkVeilLazy />
         </div>
         <div className="min-h-screen flex flex-col relative z-10">
           <Header />
