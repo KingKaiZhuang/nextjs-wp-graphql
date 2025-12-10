@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Suspense } from "react";
-import DarkVeilLazy from '@/components/DarkVeilLazy';
+
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -25,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant" className="dark">
       <body className={`${inter.className} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 relative`}>
-        <div className="fixed top-0 left-0 w-full h-[600px] z-0 pointer-events-none" style={{ maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)' }}>
-          <DarkVeilLazy />
-        </div>
+
         <div className="min-h-screen flex flex-col relative z-10">
           <Header />
           {/* Spacer for fixed/floating nav. CardNav is absolute/floating (top 2em + 60px height ~= 92px) */}
