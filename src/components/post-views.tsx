@@ -10,7 +10,6 @@ interface PostViewsProps {
 export default function PostViews({ postId, initialViews = 0 }: PostViewsProps) {
     const [views, setViews] = useState(initialViews);
     const initialized = useRef(false);
-
     useEffect(() => {
         if (initialized.current) return;
         initialized.current = true;
